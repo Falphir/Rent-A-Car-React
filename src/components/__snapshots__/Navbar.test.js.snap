@@ -1,0 +1,466 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar NavBar Show Admin Buttons 1`] = `
+<Fragment>
+  <nav
+    className="navbar"
+  >
+    <div
+      className="navbar-container"
+    >
+      <Link
+        className="navbar-logo"
+        onClick={[Function]}
+        to="/"
+      >
+        <img
+          className="Logo"
+          src="logo_simples.png"
+        />
+      </Link>
+      <div
+        className="menu-icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-bars"
+        />
+      </div>
+      <ul
+        className="nav-menu"
+      >
+        <li
+          className="nav-item"
+          data-testid="rooms"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/roomList"
+          >
+            Rooms
+          </Link>
+        </li>
+        <li
+          className="nav-item"
+          data-testid="dashboard"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/dashboard"
+          >
+            Dashboard
+          </Link>
+        </li>
+        <li
+          data-testid="register"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/register"
+          >
+            Sign Up
+          </Link>
+        </li>
+        <li
+          data-testid="login"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/login"
+          >
+            Sign In
+          </Link>
+        </li>
+      </ul>
+      <div
+        className="btn-mobile"
+        data-testid="logout"
+      >
+        <Popover
+          align="middle"
+          color="#242424"
+          content={
+            <React.Fragment>
+              <Row
+                justify="center"
+                style={
+                  Object {
+                    "marginBottom": -8,
+                  }
+                }
+              >
+                <Link
+                  onClick={[Function]}
+                  to=""
+                >
+                  <p
+                    style={
+                      Object {
+                        "color": "#fff",
+                      }
+                    }
+                  >
+                    Log Out
+                  </p>
+                </Link>
+              </Row>
+            </React.Fragment>
+          }
+          mouseEnterDelay={0.1}
+          mouseLeaveDelay={0.1}
+          overlayStyle={Object {}}
+          placement="bottom"
+          trigger="click"
+        >
+          <Avatar
+            icon={<ForwardRef(UserOutlined) />}
+            shape="circle"
+            size={60}
+          />
+        </Popover>
+      </div>
+    </div>
+  </nav>
+</Fragment>
+`;
+
+exports[`Navbar NavBar Show Editor Buttons 1`] = `
+<Fragment>
+  <nav
+    className="navbar"
+  >
+    <div
+      className="navbar-container"
+    >
+      <Link
+        className="navbar-logo"
+        onClick={[Function]}
+        to="/"
+      >
+        <img
+          className="Logo"
+          src="logo_simples.png"
+        />
+      </Link>
+      <div
+        className="menu-icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-bars"
+        />
+      </div>
+      <ul
+        className="nav-menu"
+      >
+        <li
+          className="nav-item"
+          data-testid="rooms"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/roomList"
+          >
+            Rooms
+          </Link>
+        </li>
+        <li
+          className="nav-item"
+          data-testid="dashboardEditor"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/dashboardeditor"
+          >
+            Dashboard
+          </Link>
+        </li>
+        <li
+          data-testid="register"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/register"
+          >
+            Sign Up
+          </Link>
+        </li>
+        <li
+          data-testid="login"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/login"
+          >
+            Sign In
+          </Link>
+        </li>
+      </ul>
+      <div
+        className="btn-mobile"
+        data-testid="logout"
+      >
+        <Popover
+          align="middle"
+          color="#242424"
+          content={
+            <React.Fragment>
+              <Row
+                justify="center"
+                style={
+                  Object {
+                    "marginBottom": -8,
+                  }
+                }
+              >
+                <Link
+                  onClick={[Function]}
+                  to=""
+                >
+                  <p
+                    style={
+                      Object {
+                        "color": "#fff",
+                      }
+                    }
+                  >
+                    Log Out
+                  </p>
+                </Link>
+              </Row>
+            </React.Fragment>
+          }
+          mouseEnterDelay={0.1}
+          mouseLeaveDelay={0.1}
+          overlayStyle={Object {}}
+          placement="bottom"
+          trigger="click"
+        >
+          <Avatar
+            icon={<ForwardRef(UserOutlined) />}
+            shape="circle"
+            size={60}
+          />
+        </Popover>
+      </div>
+    </div>
+  </nav>
+</Fragment>
+`;
+
+exports[`Navbar NavBar Show Guest Buttons 1`] = `
+<Fragment>
+  <nav
+    className="navbar"
+  >
+    <div
+      className="navbar-container"
+    >
+      <Link
+        className="navbar-logo"
+        onClick={[Function]}
+        to="/"
+      >
+        <img
+          className="Logo"
+          src="logo_simples.png"
+        />
+      </Link>
+      <div
+        className="menu-icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-bars"
+        />
+      </div>
+      <ul
+        className="nav-menu"
+      >
+        <li
+          className="nav-item"
+          data-testid="rooms"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/roomList"
+          >
+            Rooms
+          </Link>
+        </li>
+        <li
+          data-testid="register"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/register"
+          >
+            Sign Up
+          </Link>
+        </li>
+        <li
+          data-testid="login"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/login"
+          >
+            Sign In
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</Fragment>
+`;
+
+exports[`Navbar NavBar Show User Buttons 1`] = `
+<Fragment>
+  <nav
+    className="navbar"
+  >
+    <div
+      className="navbar-container"
+    >
+      <Link
+        className="navbar-logo"
+        onClick={[Function]}
+        to="/"
+      >
+        <img
+          className="Logo"
+          src="logo_simples.png"
+        />
+      </Link>
+      <div
+        className="menu-icon"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-bars"
+        />
+      </div>
+      <ul
+        className="nav-menu"
+      >
+        <li
+          className="nav-item"
+          data-testid="rooms"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/roomList"
+          >
+            Rooms
+          </Link>
+        </li>
+        <li
+          className="nav-item"
+          data-testid="myreserves"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/myreserves"
+          >
+            My Reserves
+          </Link>
+        </li>
+        <li
+          className="nav-item"
+          data-testid="myfavorites"
+        >
+          <Link
+            className="nav-links"
+            onClick={[Function]}
+            to="/myfavorites"
+          >
+            My Favorite Rooms
+          </Link>
+        </li>
+        <li
+          data-testid="register"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/register"
+          >
+            Sign Up
+          </Link>
+        </li>
+        <li
+          data-testid="login"
+        >
+          <Link
+            className="nav-links-mobile"
+            onClick={[Function]}
+            to="/login"
+          >
+            Sign In
+          </Link>
+        </li>
+      </ul>
+      <div
+        className="btn-mobile"
+        data-testid="logout"
+      >
+        <Popover
+          align="middle"
+          color="#242424"
+          content={
+            <React.Fragment>
+              <Row
+                justify="center"
+                style={
+                  Object {
+                    "marginBottom": -8,
+                  }
+                }
+              >
+                <Link
+                  onClick={[Function]}
+                  to=""
+                >
+                  <p
+                    style={
+                      Object {
+                        "color": "#fff",
+                      }
+                    }
+                  >
+                    Log Out
+                  </p>
+                </Link>
+              </Row>
+            </React.Fragment>
+          }
+          mouseEnterDelay={0.1}
+          mouseLeaveDelay={0.1}
+          overlayStyle={Object {}}
+          placement="bottom"
+          trigger="click"
+        >
+          <Avatar
+            icon={<ForwardRef(UserOutlined) />}
+            shape="circle"
+            size={60}
+          />
+        </Popover>
+      </div>
+    </div>
+  </nav>
+</Fragment>
+`;

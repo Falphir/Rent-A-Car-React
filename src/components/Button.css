@@ -1,0 +1,44 @@
+
+
+.btn {
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+.btn--gold--outline {
+  background: var(--gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 8px 20px;
+  margin: 5px;
+  border: 1px solid;
+  border-image-source: var(--gold);
+  border-image-slice: 1;
+}
+
+.btn--primary {
+  background-color: var(--primary);
+  color: #242424;
+  border: 1px solid var(--primary);
+}
+
+
+.btn--medium {
+  padding: 8px 20px;
+  font-size: 18px;
+  width: 125px;
+}
+
+.btn--large {
+  padding: 12px 26px;
+  font-size: 20px;
+}
+
+.btn--gold--outline:hover {
+  transition: all 0.3s ease-out;
+  box-shadow: 0px 0px 13px #cb9b51;
+}

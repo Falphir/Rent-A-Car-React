@@ -1,0 +1,21 @@
+.users {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.users-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid blue;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons {
+    margin-left: 5px;
+}

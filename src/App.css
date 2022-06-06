@@ -1,0 +1,71 @@
+:root {
+  --gold: linear-gradient(to right, #B67E28 0, #F7E377 40%, #C59831 100%);
+  --gold-shadow: #F7E377;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.home {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.register-banner-container,.login-banner-container, .reserve-banner-container, .favorites-banner-container , .admin-register-banner-container {
+  background: url('./assets/images/banner.jpg') fixed center center/cover no-repeat;
+  height: 94vh;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+
+.rooms-banner-container {
+  background: url('./assets/images/banner.jpg') fixed center center/cover no-repeat;
+  height: 120vh;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+
+.rooms-details-icons {
+  font-size: 16px;
+}
+
+.rooms-details-price {
+  font-size: 20px;
+}
+
+.rooms-details-price {
+  font-size: 30px;
+}
+
+
+@media screen and (max-width: 1920px){
+  
+  .login-banner-container {
+    height: 92.5vh;
+  }
+
+  .register-banner-container {
+    height: 92.5vh;
+  }
+
+  .admin-register-banner-container {
+    height: 92.5vh;
+  }
+
+  .reserve-banner-container {
+    height: 92.5vh;
+  }
+
+  .rooms-banner-container {
+    height: 150vh;
+  }
+
+  .favorites-banner-container {
+    height: 92.5vh;
+  }
+}
