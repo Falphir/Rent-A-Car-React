@@ -1,6 +1,9 @@
 :root {
   --gold: linear-gradient(to right, #B67E28 0, #F7E377 40%, #C59831 100%);
   --gold-shadow: #F7E377;
+
+  --red: #E22227;
+  --red-shadow: #E22227;
 }
 
 * {
@@ -19,26 +22,26 @@
 }
 
 .register-banner-container,.login-banner-container, .reserve-banner-container, .favorites-banner-container , .admin-register-banner-container {
-  background: url('./assets/images/banner.jpg') fixed center center/cover no-repeat;
+  background: url('./assets/images/banner.jpeg') fixed center center/cover no-repeat;
   height: 94vh;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
 }
 
-.rooms-banner-container {
-  background: url('./assets/images/banner.jpg') fixed center center/cover no-repeat;
+.cars-banner-container {
+  background: url('./assets/images/banner.jpeg') fixed center center/cover no-repeat;
   height: 120vh;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
 }
 
-.rooms-details-icons {
+.cars-details-icons {
   font-size: 16px;
 }
 
-.rooms-details-price {
+.cars-details-price {
   font-size: 20px;
 }
 
-.rooms-details-price {
+.cars-details-price {
   font-size: 30px;
 }
 
@@ -61,7 +64,7 @@
     height: 92.5vh;
   }
 
-  .rooms-banner-container {
+  .cars-banner-container {
     height: 150vh;
   }
 

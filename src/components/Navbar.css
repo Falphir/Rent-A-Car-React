@@ -20,8 +20,7 @@
 
 .Logo {
     background-image: url('../assets/logo/logo_simples.png');
-    width: 140px;
-    height: 50px;
+    height: 40px;
 }
 
 .navbar-logo {
@@ -46,9 +45,7 @@
 }
 
 .nav-links {
-    background-image:  var(--gold);
-    color: transparent;
-    -webkit-background-clip: text;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,14 +53,12 @@
     margin: 0.6rem;
     padding:  1rem ;
     height: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links:hover {
-    background-image: var(--gold);
-    color: transparent;
-    -webkit-background-clip: text;
-    box-shadow: inset 0px -10px 4px -7px var(--gold-shadow);
-    transition: all 0.2s ease-out;
+    color: var(--red);
+    box-shadow: inset 0px -10px 4px -7px var(--red-shadow);
 }
 
 .fa-bars {
@@ -107,10 +102,12 @@
         padding: 2rem;
         width: 100%;
         display: table;
+        
     }
     .nav-links:hover {
-        box-shadow: inset 0px -10px 10px -11px var(--gold-shadow);
+        box-shadow: none;
         border-radius: 0;
+        color: var(--red);
     }
     .navbar-logo {
         position: absolute;
@@ -132,24 +129,21 @@
         font-size: 2rem;
     }
     .nav-links-mobile {
-        background: var(--gold);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        padding: 8px 20px;
-        border: 2px solid;
-        border-image-source: var(--gold);
-        border-image-slice: 1;
+        color: #fff;
+        border: 2px solid var(--red);
         display: block;
         text-align: center;
         margin: 1rem auto;
         width: 80%;
         font-size: 1.5rem;
         padding: 14px 20px;
+        border-radius: 8px;
         transition: all 0.3s ease-out;
     }
     .nav-links-mobile:hover {
         transition: all 0.3s ease-out;
-        box-shadow: 0px 0px 13px var(--gold-shadow);
-        transition: 250ms;
+        color: #fff;
+        background-color: var(--red);
+        box-shadow: 0px 0px 13px var(--red-shadow);
     }
 }

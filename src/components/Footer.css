@@ -33,9 +33,7 @@
 }
 
 .footer-link-items > h2 {
-    background-image: var(--gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--red);
 }
 
 .footer-link-items a {
@@ -69,13 +67,18 @@
 }
 
 .social-icons {
-    background-image: var(--gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 240px;
+}
+
+.social-icons a {
+    color: var(--red);
+}
+
+.social-icons a:hover {
+    color: var(--red);
 }
 
 
@@ -92,9 +95,7 @@
 
 .website-rights {
     justify-self: center;
-    background-image: var(--gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--red);
     margin-bottom: 16px;
 }
 

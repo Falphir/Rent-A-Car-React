@@ -8,7 +8,7 @@ import logo from '../../../../assets/logo/logo_simples.png'
 
 
 const ReservesForm = () => {
-    const { roomId } = useParams();
+    const { carId } = useParams();
     const { register, handleSubmit } = useForm();
     const onSubmit = e => postReserve(onFinish(e));
     const [reserveForm] = Form.useForm();
@@ -20,7 +20,7 @@ const ReservesForm = () => {
 
     const postReserve = (data) => {
 
-        fetch('/reserve/reserves/:roomId', {
+        fetch('/reserve/reserves/:carId', {
             headers: { 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify(data)
@@ -40,7 +40,7 @@ const ReservesForm = () => {
 
                 } else {
                     console.log(response);
-                    message.error('An Error Ocurred while reserving room! Try Again Later.');
+                    message.error('An Error Ocurred while reserving car! Try Again Later.');
                 }
             })
 
@@ -67,14 +67,14 @@ const ReservesForm = () => {
                     console.log("nao pode aceder a esta pagina");
                     setUserLogged(false);  
                 } else {
-                    localStorage.setItem('idUser', response.decoded[1]);
+                    localStorage.setItem('idUser', response.decoded.id);
                     userId = localStorage.getItem('idUser');
 
-                    userName = response.decoded[2];
-                    console.log("userId " + response.decoded[1]);
-                    console.log("userName " + response.decoded[2]);
+                    userName = response.decoded.name;
+                    console.log("userId " + response.decoded.id);
+                    console.log("userName " + response.decoded.name);
 
-                    if (response.decoded[2] == 'user') {
+                    if (response.decoded.role == 'user') {
 
                         console.log("pode aceder a esta pagina");
                         console.log(userLogged)
@@ -121,13 +121,13 @@ const ReservesForm = () => {
         console.log("userID: " + userId);
         console.log("DCI: " + DCI);
         console.log("DCO: " + DCO);
-        console.log("roomID: " + roomId);
+        console.log("carID: " + carId);
 
         return {
             dateCheckIn: DCI,
             dateCheckOut: DCO,
             idUser: userId,
-            idRoom: roomId
+            idCar: carId
         }
     }
 
@@ -148,7 +148,7 @@ const ReservesForm = () => {
                                         </div>
                                         <Row justify='center'>
                                             <h2 className='reserves-card-title-h2'>
-                                                <b>Reserve Room</b>
+                                                <b>Reserve Car</b>
                                             </h2>
                                         </Row>
                                     </Col>

@@ -1,5 +1,5 @@
-.login-Logo {
-    background-image: url('../assets/logo/logo_simples.png');
+.cars-Logo {
+    background-image: url('../../../../assets/logo/logo_simples.png');
     width: auto;
     height: 60px;
 }
@@ -8,7 +8,7 @@
     margin: 30px;
 }
 
-.login-card-title-h2 {
+.cars-card-title-h2 {
     color: var(--red);
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 
-.login-form-label-h4 {
+.cars-form-label-h4 {
     color: var(--red);
     display: flex;
     justify-content: center;
@@ -28,16 +28,27 @@
     height: 100%;
 }
 
-.login-Button-Outlined {
+.cars-extra-h3 {
+    color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+}
+
+.cars-Button-Outlined {
     color: #fff;
     border: 2px solid var(--red);
     transition: all 0.3s ease-out;
     background-color: transparent;
 }
 
-.login-Button-Outlined:hover {
+.cars-Button-Outlined:hover {
     color: #fff;
     background-color: var(--red);
     box-shadow: 0px 0px 13px var(--red);
     border: 2px solid var(--red);
-  }
+}
+
+  

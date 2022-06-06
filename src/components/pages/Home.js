@@ -1,6 +1,6 @@
 import '../../App.css'
 import BannerSection from '../BannerSection'
-import RoomsCard from '../Cards/allRooms/Rooms'
+import CarsCard from '../Cards/allCars/Cars'
 import Footer from '../Footer';
 
 
@@ -10,7 +10,7 @@ function Home() {
     return (
         <>
             <BannerSection />
-            <RoomsCard></RoomsCard>
+            <CarsCard></CarsCard>
             <Footer />
         </>
     )

@@ -7,7 +7,7 @@
 } */
 
 .banner-container {
-    background: url('../assets/images/banner.jpg') center center/cover no-repeat;
+    background: url('../assets/images/banner.jpeg') center center/cover no-repeat;
     height: 95vh;
     width: 100%;
     display: flex;
@@ -62,18 +62,18 @@
 }
 
 .banner-search .input:hover {
-    border:2px solid var(--gold-shadow)
+    border:2px solid var(--red-shadow)
 }
 
 .banner-search .check-in-out:hover {
-    border:2px solid var(--gold-shadow)
+    border:2px solid var(--red-shadow)
 }
 
 .banner-search .btn-search:hover {
     transition: all 0.3s ease-out;
     background-color: #242424;
     border: 2px solid #242424;
-    box-shadow: 5px 0px 13px -2px var(--gold-shadow);
+    box-shadow: 5px 0px 13px -2px var(--red-shadow);
     transition: 250ms;
 }
 

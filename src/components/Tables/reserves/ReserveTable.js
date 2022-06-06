@@ -32,8 +32,8 @@ const ReserveTable = (props) => {
             //hidden: hidden,
         },
         {
-            title: 'ID Room',
-            dataIndex: 'idRoom',
+            title: 'ID Car',
+            dataIndex: 'idCar',
             //hidden: hidden,
         },
         {

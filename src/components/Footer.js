@@ -29,7 +29,7 @@ function Footer() {
                         </Link>
                     </div>
                     <small className="website-rights">
-                        GrandHotel © 2022
+                        Rent A Car © 2022
                     </small>
                     <div className="social-icons">
                         <Link to='/' target="_blank" aria-label='Facebook' className="social-icon-link facebook">

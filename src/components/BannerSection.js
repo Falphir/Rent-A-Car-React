@@ -21,7 +21,7 @@ function BannerSection() {
             <p>What are you waiting for?</p>
             <div className="banner-search">
                 <Input className='input' placeholder="Search here..." name="search" onChange={handleChange} />
-                <Link to={`/rooms/search/${descricao}`}>
+                <Link to={`/cars/search/${descricao}`}>
                     <Button className='btn-search'>
                         <i class="fas fa-search" aria-hidden="true"></i>
                     </Button>

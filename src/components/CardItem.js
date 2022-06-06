@@ -5,7 +5,7 @@ function CardItem(props) {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({
-        rooms: [],
+        cars: [],
         pagination: {
             current: 1,
             pageSize: 15,
@@ -18,7 +18,7 @@ function CardItem(props) {
         return tags.map((tag) => {
             return (
                 <label key={tag._id}>
-                    Type Room: {tag.typeRoom},
+                    Type Car: {tag.typeCar},
                     VIP: {tag.vip.toString()},
                     Nº Pool: {tag.nPool},
                     Car Park: {tag.carPark.toString()},
@@ -56,8 +56,8 @@ function CardItem(props) {
         },
 
         {
-            title: 'Nº Rooms',
-            dataIndex: 'nRoom',
+            title: 'Nº Cars',
+            dataIndex: 'nCar',
         },
 
         {
@@ -74,7 +74,7 @@ function CardItem(props) {
 
 
     const fetchApi = (pageSize, current) => {
-        const url = '/hotel/rooms?' + new URLSearchParams({
+        const url = '/rent-a-car/cars?' + new URLSearchParams({
             limit: pageSize,
             skip: current - 1
         })
@@ -87,13 +87,13 @@ function CardItem(props) {
             .then((response) => response.json())
 
             .then((response) => {
-                const { auth, rooms = [], pagination } = response;
+                const { auth, cars = [], pagination } = response;
 
 
                 if (auth) {
                     setLoading(false);
                     setData({
-                        rooms,
+                        cars,
                         pagination: {
                             current: pagination.page + 1 || 1,
                             pageSize: pagination.pageSize || 10,
@@ -109,7 +109,7 @@ function CardItem(props) {
         fetchApi(data.pagination.pageSize, data.pagination.current);
 
         return () => setData({
-            rooms: [],
+            cars: [],
             pagination: {
                 current: 1,
                 pageSize: 10
@@ -123,7 +123,7 @@ function CardItem(props) {
     };
 
 
-    const { rooms, pagination } = data;
+    const { cars, pagination } = data;
 
     return (
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import Rooms from '../Tables/rooms/Rooms';
+import Cars from '../Tables/cars/Cars';
 import Reserves from '../Tables/reserves/Reserves';
 import { Link } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
@@ -45,7 +45,7 @@ function DashboardEditor() {
 
                 console.log(response.decoded);
 
-                if (response.decoded[2] == 'editor') {
+                if (response.decoded.role == 'editor') {
 
                     console.log("pode aceder ao dashboard");
                     setUserLogged(response.decoded);
@@ -86,16 +86,16 @@ function DashboardEditor() {
                                     defaultSelectedKeys={['1']}
                                     style={{ height: '100%' }}
                                 >
-                                    <Menu.Item key="1" onClick={() => setMenu(1)}>Rooms</Menu.Item>
+                                    <Menu.Item key="1" onClick={() => setMenu(1)}>Cars</Menu.Item>
                                     <Menu.Item key="2" onClick={() => setMenu(2)}>Reserves</Menu.Item>
                                 </Menu>
                             </Sider>
                             <Content className='content' style={{ padding: '12px 24px', minHeight: 280, background: '#fff' }}>
                                 {(() => {
                                     switch (menu) {
-                                        case 1: return <Rooms />;
+                                        case 1: return <Cars />;
                                         case 2: return <Reserves />;
-                                        default: return <Rooms />;
+                                        default: return <Cars />;
                                     }
                                 })()}
                             </Content>

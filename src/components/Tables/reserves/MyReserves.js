@@ -4,7 +4,7 @@ import './ReserveTable.css';
 import { SelectOutlined } from '@ant-design/icons';
 import { Link, Navigate } from 'react-router-dom';
 import { Modal, List } from 'antd';
-import ReserveRoom from './ReserveRoom'
+import ReserveCar from './ReserveCar'
 
 
 function useWindowSize() {
@@ -37,14 +37,14 @@ const MyReserves = (props) => {
     const [userLogged, setUserLogged] = useState(true);
     const [data, setData] = useState({
         reserves: [],
-        rooms: [],
+        cars: [],
         pagination: {
             current: 1,
             pageSize: 10,
             total: 0
         }
     });
-    let idUser, nameUser, currentID, IDROOM;
+    let idUser, nameUser, currentID, IDCAR;
 
 
 
@@ -67,13 +67,13 @@ const MyReserves = (props) => {
                     console.log("nao pode aceder ao My Reserves");
                     setUserLogged(false);  
                 } else {
-                    localStorage.setItem('idUser', response.decoded[1]);
+                    localStorage.setItem('idUser', response.decoded.id);
 
-                    idUser = response.decoded[1];
+                    idUser = response.decoded.id;
 
-                    nameUser = response.decoded[2];
+                    nameUser = response.decoded.name;
 
-                    if (response.decoded[2] == 'user') {
+                    if (response.decoded.role == 'user') {
 
                         console.log("pode aceder ao My Reserves");
                         console.log(userLogged)
@@ -87,8 +87,8 @@ const MyReserves = (props) => {
                     }
     
                 }
-                //console.log("idUser " + response.decoded[1]);
-                //console.log("nameUser " + response.decoded[2]);
+                //console.log("idUser " + response.decoded.id);
+                //console.log("nameUser " + response.decoded.name);
             })
 
             .catch(() => {
@@ -117,14 +117,14 @@ const MyReserves = (props) => {
             dataIndex: 'dateCheckOut',
         },
         /* {
-            title: 'ID Room',
-            dataIndex: 'idRoom',
+            title: 'ID Car',
+            dataIndex: 'idCar',
         }, */
         {
-            title: 'Room',
+            title: 'Car',
             render: (record) => {
                 return <>
-                    <Link to={`/rooms/${record.idRoom}`}>
+                    <Link to={`/cars/${record.idCar}`}>
                         <SelectOutlined style={{ color: "blue", marginLeft: 12 }} />
                     </Link>
 
@@ -157,11 +157,11 @@ const MyReserves = (props) => {
 
                 console.log(response);
                     if (response.reserves[0] != null) {
-                        IDROOM = response.reserves[0].idRoom;
-                        console.log(IDROOM);
+                        IDCAR = response.reserves[0].idCar;
+                        console.log(IDCAR);
                     }
     
-                    fetch('/hotel/rooms/' + IDROOM)
+                    fetch('/rent-a-car/cars/' + IDCAR)
     
                     if (auth) {
                         setLoading(false);
@@ -213,7 +213,7 @@ const MyReserves = (props) => {
                 grid={{ gutter: 16, column: ncolumn }} pagination={pagination} rowKey={record => record._id} loading={loading}
                 dataSource={reserves}
                 renderItem={item => (
-                    <List.Item><ReserveRoom checkIn={item.dateCheckIn} checkOut={item.dateCheckOut} RoomId={item.idRoom} /></List.Item>
+                    <List.Item><ReserveCar checkIn={item.dateCheckIn} checkOut={item.dateCheckOut} CarId={item.idCar} /></List.Item>
                 )}
             />
             {/* <Table

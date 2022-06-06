@@ -7,13 +7,12 @@ import 'firebase/compat/storage';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCGs7WAcChw4hrmC68XUN6cGPacVLS1Ipw",
-  authDomain: "test-67e78.firebaseapp.com",
-  projectId: "test-67e78",
-  storageBucket: "test-67e78.appspot.com",
-  messagingSenderId: "697279054593",
-  appId: "1:697279054593:web:0f3fe3bd7c4726f4db5100",
-  measurementId: "G-XZ7RX1D4C7"
+  apiKey: "AIzaSyB_BTo9ukqq4Y0-hUvHzfrPAAwP95PyG0w",
+  authDomain: "rent-a-car-f3018.firebaseapp.com",
+  projectId: "rent-a-car-f3018",
+  storageBucket: "rent-a-car-f3018.appspot.com",
+  messagingSenderId: "774166748924",
+  appId: "1:774166748924:web:ca473f33404537b5220179"
 };
 
 // Initialize Firebase

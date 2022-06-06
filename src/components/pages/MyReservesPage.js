@@ -17,7 +17,7 @@ function MyReservesPage() {
                     </Breadcrumb>
                 </Content>
                 <Layout>
-                    <div className='room-container'>
+                    <div className='car-container'>
                         <MyReserves />
                     </div>
                 </Layout>

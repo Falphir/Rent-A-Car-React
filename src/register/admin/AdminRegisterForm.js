@@ -62,7 +62,7 @@ const RegisterForm = () => {
 
                 console.log(response.decoded);
 
-                if (response.decoded[2] == 'admin') {
+                if (response.decoded.role == 'admin') {
 
                     console.log("pode aceder a este register");
                     setUserLogged(response.decoded);
@@ -113,7 +113,7 @@ const RegisterForm = () => {
                 password: e.password,
                 role: {
                     nameRole: radio.value,
-                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-room", "update-room", "read-reserve-client", "delete-room"]
+                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car"]
                 }
             }
         } else if (radio.value == 'admin') {
@@ -123,7 +123,7 @@ const RegisterForm = () => {
                 password: e.password,
                 role: {
                     nameRole: radio.value,
-                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-room", "update-room", "read-reserve-client", "delete-room", "read-users", "delete-user"]
+                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car", "read-users", "delete-user"]
                 }
             }
         }
@@ -236,62 +236,12 @@ const RegisterForm = () => {
                                         </Form.Item>
                                     </Row>
                                 </Form>
-
-                                {/* <form className='form-login' onSubmit={handleSubmit(onSubmit)}>
-                                    <div className='field'>
-                                        <label>Name: </label>
-                                        <input {...register('name')}></input>
-                                    </div>
-
-                                    <div className='field'>
-                                        <label>Password: </label>
-                                        <input {...register('password')} type='password'></input>
-                                    </div>
-
-                                    <input className='submit' type='submit'></input>
-                                </form> */}
                             </Card>
                         </div>
                     </Row>
                 </Col>
                 <Col span={8}></Col>
             </Row >
-
-            {/* <h2>Register Form</h2>
-
-            <form className='form-register' onSubmit={handleSubmit(onSubmit)}>
-                <div className='field'>
-                    <label>Name: </label>
-                    <input {...register('name')}></input>
-                </div>
-
-                <div className='field'>
-                    <label>Email: </label>
-                    <input {...register('email')}></input>
-                </div>
-
-                <div className='field'>
-                    <label>Password: </label>
-                    <input {...register('password')} type='password'></input>
-                </div>
-
-                <div className='field'>
-                    <label>Role: </label>
-                    <select {...register('nameRole')}>
-                        <option value="user">User</option>
-                    </select>
-                </div>
-
-                <div className='field'>
-                    <label>Permission: </label>
-                    <select {...register('scopes')}>
-                        <option>User</option>
-                    </select>
-                </div>
-
-
-                <input className='submit' type='submit'></input>
-            </form> */}
         </div>
     )
 }

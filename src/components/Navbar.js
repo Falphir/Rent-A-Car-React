@@ -58,7 +58,7 @@ function Navbar() {
         //se scope do utilizador for == ao scope q tem permissão pra ver button
         setUserLogged(response.auth);
         //console.log("stuff: " + response.auth);
-        console.log("scopes: " + response.decoded);
+        console.log(response.decoded);
 
         function showButtons() {
           if (window.innerWidth <= 960) {
@@ -90,7 +90,7 @@ function Navbar() {
         window.addEventListener('resize', showButtons);
         window.addEventListener('load', showButtons);
 
-        if (response.decoded[2] == 'undefined') {
+        if (response.decoded.role == 'undefined') {
 
           setDashboardButton(false);
           setDashboardEditorButton(false);
@@ -101,7 +101,7 @@ function Navbar() {
           console.log("guest");
 
 
-        } else if (response.decoded[2] == 'user') {
+        } else if (response.decoded.role == 'user') {
 
           setDashboardButton(false);
           setDashboardEditorButton(false);
@@ -111,7 +111,7 @@ function Navbar() {
           console.log("user");
 
 
-        } else if (response.decoded[2] == 'admin') {
+        } else if (response.decoded.role == 'admin') {
 
           setDashboardButton(true);
           setDashboardEditorButton(false);
@@ -121,7 +121,7 @@ function Navbar() {
           console.log("admin");
 
 
-        } else if (response.decoded[2] == 'editor') {
+        } else if (response.decoded.role == 'editor') {
 
           setDashboardButton(false);
           
@@ -169,12 +169,12 @@ function Navbar() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
-            <li data-testid="rooms" className='nav-item'>
-              <Link to='/roomList'
+            <li data-testid="cars" className='nav-item'>
+              <Link to='/carList'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Rooms
+                Cars
               </Link>
             </li>
 
@@ -194,7 +194,7 @@ function Navbar() {
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
-                  My Favorite Rooms
+                  My Favorite Cars
                 </Link>
               </li>}
 
@@ -254,12 +254,12 @@ function Navbar() {
 
           {signUpLink &&
             <Link data-testid="register" to='/register' className='btn-mobile'>
-              <Button buttonStyle='btn--gold--outline'>SIGN UP</Button>
+              <Button buttonStyle='btn--red--outline'>SIGN UP</Button>
             </Link>}
 
           {signInLink &&
             <Link data-testid="login" to='/login' className='btn-mobile'>
-              <Button buttonStyle='btn--gold--outline'>SIGN IN</Button>
+              <Button buttonStyle='btn--red--outline'>SIGN IN</Button>
             </Link>}
 
           {signOutLink &&
