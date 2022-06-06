@@ -3,7 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import './ReservesForm.css';
 import React, { useState, useEffect } from 'react';
 import Config from "../../../../config";
-import { Form, Button, Row, Col, DatePicker, Card, message } from "antd";
+import { Form, Button, Row, Col, DatePicker, Card, message, Input, Checkbox } from "antd";
 import logo from '../../../../assets/logo/logo_simples.png'
 
 
@@ -15,8 +15,10 @@ const ReservesForm = () => {
     const [userLogged, setUserLogged] = useState(true);
     const { RangePicker } = DatePicker;
     const [loading, setLoading] = useState(true);
-    var DCI, DCO, userId, userName;
+    const [Handler, setHandler] = useState(false);
+    var DPU, DR, userId, userName;
 
+    
 
     const postReserve = (data) => {
 
@@ -34,13 +36,12 @@ const ReservesForm = () => {
                     return (
                         <>
                             {response.json()}
-                            {window.location.href = '/dashboard'}
+                            {window.location.href = '/'}
                         </>
                     )
 
                 } else {
-                    console.log(response);
-                    message.error('An Error Ocurred while reserving car! Try Again Later.');
+                    {window.location.href = '/'}
                 }
             })
 
@@ -69,6 +70,7 @@ const ReservesForm = () => {
                 } else {
                     localStorage.setItem('idUser', response.decoded.id);
                     userId = localStorage.getItem('idUser');
+                    userName = response.decoded.name;
 
                     userName = response.decoded.name;
                     console.log("userId " + response.decoded.id);
@@ -86,11 +88,7 @@ const ReservesForm = () => {
                         console.log("nao pode aceder a esta pagina");
                         setUserLogged(false);
                     }
-
                 }
-
-
-
             })
 
             .catch(() => {
@@ -102,14 +100,20 @@ const ReservesForm = () => {
         return <Navigate to={'/'}></Navigate>
     }
 
-    function onChangeDateCheckIn(date, DateCheckIn) {
-        console.log("date check in: " + DateCheckIn);
-        DCI = DateCheckIn;
+    function onChangeDatePickUp(date, DatePickUp) {
+        console.log("date pick up: " + DatePickUp);
+        DPU = DatePickUp;
     }
 
-    function onChangeDateCheckOut(date, DateCheckOut) {
-        console.log("date check out: " + DateCheckOut);
-        DCO = DateCheckOut;
+    function onChangeDateReturn(date, DateReturn) {
+        console.log("date return: " + DateReturn);
+        DR = DateReturn;
+    }
+
+    function onChangeDifferentReturnLocation(e) {
+
+        console.log("checked: " + e.target.checked);
+        setHandler(e.target.checked)
     }
 
 
@@ -119,14 +123,25 @@ const ReservesForm = () => {
 
         console.log(e);
         console.log("userID: " + userId);
-        console.log("DCI: " + DCI);
-        console.log("DCO: " + DCO);
+        console.log("userName: " + userName);
+        console.log("DPU: " + DPU);
+        console.log("DR: " + DR);
         console.log("carID: " + carId);
 
+        console.log("return: " + e.returnlocation)
+
+        if(e.returnlocation == undefined){
+            e.returnlocation = e.pickuplocation
+            console.log("return: " + e.returnlocation)
+        }
+
         return {
-            dateCheckIn: DCI,
-            dateCheckOut: DCO,
+            datePickUp: DPU,
+            dateReturn: DR,
+            PickUpLocation: e.pickuplocation,
+            ReturnLocation: e.returnlocation,
             idUser: userId,
+            nameUser: userName,
             idCar: carId
         }
     }
@@ -155,15 +170,36 @@ const ReservesForm = () => {
                                 </Row>}
                                 bordered={false} style={{ width: 350 }}>
                                 <Form layout='vertical' onFinish={onSubmit}>
-                                    <Form.Item label={<h4 className='reserves-form-label-h4'><b>Date Check In</b></h4>} name="dateCheckIn">
+                                    <Form.Item label={<h4 className='reserves-form-label-h4'><b>Date Pick Up</b></h4>} name="datePickUp">
                                         <Row justify="center">
-                                            <DatePicker onChange={onChangeDateCheckIn} style={{ width: 300 }} required />
+                                            <DatePicker format={"DD/MM/YYYY"} onChange={onChangeDatePickUp} style={{ width: 300 }} required />
                                         </Row>
                                     </Form.Item>
 
-                                    <Form.Item label={<h4 className='reserves-form-label-h4'><b>Date Check In</b></h4>} name="dateCheckOut">
+                                    <Form.Item label={<h4 className='reserves-form-label-h4'><b>Date Return</b></h4>} name="dateReturn">
                                         <Row justify="center">
-                                            <DatePicker onChange={onChangeDateCheckOut} style={{ width: 300 }} required />
+                                            <DatePicker format={"DD/MM/YYYY"} onChange={onChangeDateReturn} style={{ width: 300 }} required />
+                                        </Row>
+                                    </Form.Item>
+
+                                    <Form.Item label={<h4 className='reserves-form-label-h4'><b>Pick-Up Location</b></h4>} name="pickuplocation">
+                                        <Row justify="center">
+                                            <Input></Input>
+                                        </Row>
+                                    </Form.Item>
+                                    {Handler &&
+                                        <Form.Item label={<h4 className='reserves-form-label-h4'><b>Return Location</b></h4>} name="returnlocation">
+                                            <Row justify="center">
+                                                <Input></Input>
+                                            </Row>
+                                        </Form.Item>
+                                    }
+
+                                    <Form.Item name="differentreturnlocation">
+                                        <Row justify="left">
+                                            <Checkbox value="" onChange={onChangeDifferentReturnLocation} style={{color: "#fff"}}>
+                                                Different Return Location
+                                            </Checkbox>
                                         </Row>
                                     </Form.Item>
 

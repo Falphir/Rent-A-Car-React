@@ -90,19 +90,6 @@ const CarTable = (props) => {
         );
     }
 
-    //Renderizar Imagem
-    const renderFacilities = (text, record) => {
-        console.log("facilities: " + record)
-        return (
-            <label key={record._id}>
-                <Tag color="blue">Type Car: {record.typeCar} </Tag>
-                <Tag color="blue">Nº Stars: {record.nStars}</Tag>
-                <Tag color="blue">Nº Single Bed: {record.nSingleBed}</Tag>
-                <Tag color="blue">Nº Double Bed: {record.nDoubleBed}</Tag>
-            </label>
-        );
-    }
-
 
     //Renderizar Extras
     const renderExtras = (extras) => {
@@ -125,41 +112,42 @@ const CarTable = (props) => {
         // render: () => <img src={`image`} style={{width: 100}, {height: 50}}/>
         // <img src="images/car2.jpg" style={{width: 100}, {height: 50}}/>
         {
+            title: 'Title',
+            dataIndex: 'title',
+            sorter: (a, b) => a.title.localeCompare(b.title),
+            defaultSortOrder: 'ascend',
+        },
+        {
             title: 'Description',
             dataIndex: 'description',
             sorter: (a, b) => a.description.localeCompare(b.description),
-            defaultSortOrder: 'ascend',
         },
 
         {
-            title: 'Nº Adults',
-            dataIndex: 'nAdult',
-            sorter: (a, b) => a.nAdult - b.nAdult,
+            title: 'Nº Seats',
+            dataIndex: 'seats',
+            sorter: (a, b) => a.seats - b.seats,
         },
 
         {
-            title: 'Nº Children',
-            dataIndex: 'nChild',
-            sorter: (a, b) => a.nChild - b.nChild,
+            title: 'Kilometers',
+            dataIndex: 'kilometers',
+            sorter: (a, b) => a.kilometers - b.kilometers,
         },
-
-        {
-            title: 'Nº Cars',
-            dataIndex: 'nCar',
-            sorter: (a, b) => a.nCar - b.nCar,
-        },
-
         {
             title: 'Price (€)',
             dataIndex: 'price',
             sorter: (a, b) => a.price - b.price,
         },
-
         {
-            title: 'Facilities',
-            dataIndex: 'facilities',
-            render: renderFacilities,
-
+            title: 'Transmission',
+            dataIndex: 'typeTransmission',
+            sorter: (a, b) => a.typeTransmission - b.typeTransmission,
+        },
+        {
+            title: 'Category',
+            dataIndex: 'carCategory',
+            sorter: (a, b) => a.carCategory - b.carCategory,
         },
         {
             title: 'Extras',

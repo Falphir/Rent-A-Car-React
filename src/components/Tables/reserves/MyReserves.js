@@ -109,12 +109,12 @@ const MyReserves = (props) => {
 
     const columns = [
         {
-            title: 'Date Check In',
-            dataIndex: 'dateCheckIn',
+            title: 'Date Pick Up',
+            dataIndex: 'datePickUp',
         },
         {
-            title: 'Date Check Out',
-            dataIndex: 'dateCheckOut',
+            title: 'Date Return',
+            dataIndex: 'dateReturn',
         },
         /* {
             title: 'ID Car',
@@ -192,10 +192,8 @@ const MyReserves = (props) => {
         ncolumn = 2
     } else if (Size.width >= 992 && Size.width < 1200) {
         ncolumn = 3
-    } else if (Size.width >= 1200 && Size.width <= 1920) {
+    } else if (Size.width >= 1200) {
         ncolumn = 4
-    } else if (Size.width > 1920) {
-        ncolumn = 5
     }
 
 
@@ -213,17 +211,9 @@ const MyReserves = (props) => {
                 grid={{ gutter: 16, column: ncolumn }} pagination={pagination} rowKey={record => record._id} loading={loading}
                 dataSource={reserves}
                 renderItem={item => (
-                    <List.Item><ReserveCar checkIn={item.dateCheckIn} checkOut={item.dateCheckOut} CarId={item.idCar} /></List.Item>
+                    <List.Item><ReserveCar checkIn={item.datePickUp} checkOut={item.dateReturn} CarId={item.idCar} /></List.Item>
                 )}
             />
-            {/* <Table
-            columns={columns}
-            rowKey={record => record._id}
-            dataSource={reserves}
-            pagination={pagination}
-            loading={loading}
-            onChange={handleTableChange}
-        /> */}
         </>
     )
 }
