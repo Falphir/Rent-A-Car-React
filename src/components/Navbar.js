@@ -22,8 +22,6 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const [userLogged, setUserLogged] = useState();
-  const [favoritesLink, setFavoritesButton] = useState();
-
   const onClickLogout = () => {
     fetch('/auth/logout', {
       headers: { 'Accept': 'application/json' }
@@ -95,7 +93,6 @@ function Navbar() {
           setDashboardButton(false);
           setDashboardEditorButton(false);
           setReservesButton(false);
-          setFavoritesButton(false);
           showButtons();
           localStorage.removeItem('idUser');
           console.log("guest");
@@ -106,7 +103,6 @@ function Navbar() {
           setDashboardButton(false);
           setDashboardEditorButton(false);
           setReservesButton(true);
-          setFavoritesButton(true);
           showButtons();
           console.log("user");
 
@@ -116,7 +112,6 @@ function Navbar() {
           setDashboardButton(true);
           setDashboardEditorButton(false);
           setReservesButton(false);
-          setFavoritesButton(false);
           showButtons();
           console.log("admin");
 
@@ -127,7 +122,6 @@ function Navbar() {
           
           setDashboardEditorButton(true);
           setReservesButton(false);
-          setFavoritesButton(false);
           showButtons();
           console.log("editor");
 
@@ -137,7 +131,6 @@ function Navbar() {
           setDashboardButton(false);
           setDashboardEditorButton(false);
           setReservesButton(false);
-          setFavoritesButton(false);
           showButtons();
           console.log("guest");
         }
@@ -188,16 +181,6 @@ function Navbar() {
                 </Link>
               </li>}
 
-            {favoritesLink &&
-              <li data-testid="myfavorites" className='nav-item'>
-                <Link to='/myfavorites'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  My Favorite Cars
-                </Link>
-              </li>}
-
             {dashboardLink &&
               <li data-testid="dashboard" className='nav-item'>
                 <Link to='/dashboard'
@@ -243,7 +226,7 @@ function Navbar() {
                 <Link
                   to='/'
                   className='nav-links-mobile'
-                  onClick={closeMobileMenu, onClickLogout}
+                  onClick={[closeMobileMenu, onClickLogout]}
                 >
                   Sign Out
                 </Link>

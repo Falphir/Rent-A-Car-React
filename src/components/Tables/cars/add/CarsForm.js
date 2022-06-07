@@ -180,7 +180,7 @@ const CarsForm = () => {
                                                 message: 'Please input the Kilometers!',
                                             },
                                         ]} >
-                                        <InputNumber min={0} required />
+                                        <Input required />
                                     </Form.Item>
                                     <Form.Item name="price" label={<h4 className='cars-form-label-h4'><b>Price</b></h4>}
                                         rules={[

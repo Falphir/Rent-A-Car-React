@@ -4,11 +4,9 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import SearchCarCard from './SearchCarsCard';
 import { Menu, Dropdown, Button,Layout, Checkbox } from 'antd';
-import { DownOutlined, EuroOutlined, UserOutlined, StarOutlined, FilterOutlined, HomeOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { DownOutlined, EuroOutlined, UserOutlined, CarOutlined, PaperClipOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Footer from '../../Footer';
 import MostRecentSearchCarsCard from './MostRecentSearchCarsCard';
-import LessStarsSearchCarsCard from './LessStarsSearchCarsCard';
-import MoreStarsSearchCarsCard from './MoreStarsSearchCarsCard';
 import LowPriceSearchCarsCard from './LowPriceSearchCarsCard';
 import HighPriceSearchCarsCard from './HighPriceSearchCarsCard';
 
@@ -56,15 +54,9 @@ const Cars = () => {
                 return <LowPriceSearchCarsCard />; //lowest price
 
             case 3:
-                return <MoreStarsSearchCarsCard />; //more stars first
-
-            case 4:
-                return <LessStarsSearchCarsCard />; //less stars first
-
-            case 5:
                 return <MostRecentSearchCarsCard />; //most recent
 
-            case 6:
+            case 4:
                 return <SearchCarCard />; //most old
 
             default:
@@ -81,16 +73,10 @@ const Cars = () => {
             <Menu.Item key="2" onClick={() => SetView(2)}>
                 <i class="fas fa-sort-amount-down-alt"></i> Lowest Price
             </Menu.Item>
-            <Menu.Item key="3" onClick={() => SetView(3)}>
-                <i class="fas fa-star"></i> Stars (more stars first)
-            </Menu.Item>
-            <Menu.Item key="4" onClick={() => SetView(4)}>
-                <i class="fas fa-star"></i> Stars (less stars first)
-            </Menu.Item>
-            <Menu.Item key="5" onClick={() => SetView(5)}>
+            <Menu.Item key="3" onClick={() => SetView(5)}>
                 <i class="fas fa-sort-amount-up"></i> Most Recent
             </Menu.Item>
-            <Menu.Item key="6" onClick={() => SetView(6)}>
+            <Menu.Item key="4" onClick={() => SetView(6)}>
                 <i class="fas fa-sort-amount-down-alt"></i> Most Old
             </Menu.Item>
         </Menu>
@@ -119,47 +105,33 @@ const Cars = () => {
                     }}
                 >
                     <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} style={{ height: '100%' }} >
-
-                        <SubMenu key="sub1" icon={<HomeOutlined />} title="Type Car">
-                            <Menu.Item key="1"><Checkbox onChange={onChange}>Apartamento</Checkbox></Menu.Item>
-                            <Menu.Item key="2"><Checkbox onChange={onChange}>Quarto</Checkbox></Menu.Item>
-                            <Menu.Item key="3"><Checkbox onChange={onChange}>Casa de Férias</Checkbox></Menu.Item>
-                            <Menu.Item key="4"><Checkbox onChange={onChange}>Hostel</Checkbox></Menu.Item>
-                            <Menu.Item key="5"><Checkbox onChange={onChange}>Casa de Campo</Checkbox></Menu.Item>
-                            <Menu.Item key="6"><Checkbox onChange={onChange}>Outro</Checkbox></Menu.Item>
+                        <SubMenu key="sub1" icon={<CarOutlined />} title="Car Category">
+                            <Menu.Item key="1"><Checkbox onChange={onChange}>Small</Checkbox></Menu.Item>
+                            <Menu.Item key="2"><Checkbox onChange={onChange}>Medium</Checkbox></Menu.Item>
+                            <Menu.Item key="3"><Checkbox onChange={onChange}>Large</Checkbox></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" icon={<EuroOutlined />} title="Price (per night)">
-                            <Menu.Item key="7"><Checkbox onChange={onChange}>0€ - 50€</Checkbox></Menu.Item>
-                            <Menu.Item key="8"><Checkbox onChange={onChange}>50€ - 100€</Checkbox></Menu.Item>
-                            <Menu.Item key="9"><Checkbox onChange={onChange}>100€ - 150€</Checkbox></Menu.Item>
-                            <Menu.Item key="10"><Checkbox onChange={onChange}>150€ - 200€</Checkbox></Menu.Item>
-                            <Menu.Item key="11"><Checkbox onChange={onChange}>more than 200€</Checkbox></Menu.Item>
+                        <SubMenu key="sub3" icon={<CarOutlined />} title="Transmission">
+                            <Menu.Item key="4"><Checkbox onChange={onChange}>Manual</Checkbox></Menu.Item>
+                            <Menu.Item key="5"><Checkbox onChange={onChange}>Automatic</Checkbox></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub3" icon={<FilterOutlined />} title="Popular filters">
-                            <Menu.Item key="12"><Checkbox onChange={onChange}>Car Park</Checkbox></Menu.Item>
-                            <Menu.Item key="13"><Checkbox onChange={onChange}>BreakFast</Checkbox></Menu.Item>
-                            <Menu.Item key="14"><Checkbox onChange={onChange}>Lunch</Checkbox></Menu.Item>
-                            <Menu.Item key="15"><Checkbox onChange={onChange}>Spa</Checkbox></Menu.Item>
-                            <Menu.Item key="16"><Checkbox onChange={onChange}>Pool</Checkbox></Menu.Item>
-                            <Menu.Item key="17"><Checkbox onChange={onChange}>Vip</Checkbox></Menu.Item>
+                        <SubMenu key="sub2" icon={<EuroOutlined />} title="Price (per day)">
+                            <Menu.Item key="6"><Checkbox onChange={onChange}>0€ - 50€</Checkbox></Menu.Item>
+                            <Menu.Item key="7"><Checkbox onChange={onChange}>50€ - 100€</Checkbox></Menu.Item>
+                            <Menu.Item key="8"><Checkbox onChange={onChange}>100€ - 150€</Checkbox></Menu.Item>
+                            <Menu.Item key="9"><Checkbox onChange={onChange}>150€ - 200€</Checkbox></Menu.Item>
+                            <Menu.Item key="10"><Checkbox onChange={onChange}>more than 200€</Checkbox></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub4" icon={<StarOutlined />} title="Stars">
-                            <Menu.Item key="18"><Checkbox onChange={onChange}>0 stars</Checkbox></Menu.Item>
-                            <Menu.Item key="19"><Checkbox onChange={onChange}>1 star</Checkbox></Menu.Item>
-                            <Menu.Item key="20"><Checkbox onChange={onChange}>2 stars</Checkbox></Menu.Item>
-                            <Menu.Item key="21"><Checkbox onChange={onChange}>3 stars</Checkbox></Menu.Item>
-                            <Menu.Item key="22"><Checkbox onChange={onChange}>4 stars</Checkbox></Menu.Item>
-                            <Menu.Item key="23"><Checkbox onChange={onChange}>5 stars</Checkbox></Menu.Item>
+                        <SubMenu key="sub4" icon={<UserOutlined />} title="Seats">
+                            <Menu.Item key="11"><Checkbox onChange={onChange}>2 seats</Checkbox></Menu.Item>
+                            <Menu.Item key="12"><Checkbox onChange={onChange}>5 seats</Checkbox></Menu.Item>
+                            <Menu.Item key="13"><Checkbox onChange={onChange}>7 seats</Checkbox></Menu.Item>
+                            <Menu.Item key="14"><Checkbox onChange={onChange}>9 seats</Checkbox></Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub5" icon={<HomeOutlined />} title="Bed preference">
-                            <Menu.Item key="24"><Checkbox onChange={onChange}>Single Bed</Checkbox></Menu.Item>
-                            <Menu.Item key="25"><Checkbox onChange={onChange}>Double Bed</Checkbox></Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub6" icon={<UserOutlined />} title="Person">
-                            <Menu.Item key="26"><Checkbox onChange={onChange}>1 adult</Checkbox></Menu.Item>
-                            <Menu.Item key="27"><Checkbox onChange={onChange}>2 adults</Checkbox></Menu.Item>
-                            <Menu.Item key="28"><Checkbox onChange={onChange}>1 child</Checkbox></Menu.Item>
-                            <Menu.Item key="29"><Checkbox onChange={onChange}>2 children</Checkbox></Menu.Item>
+                        <SubMenu key="sub5" icon={<PaperClipOutlined />} title="Extras">
+                            <Menu.Item key="15"><Checkbox onChange={onChange}>GPS</Checkbox></Menu.Item>
+                            <Menu.Item key="16"><Checkbox onChange={onChange}>Baby Seat</Checkbox></Menu.Item>
+                            <Menu.Item key="17"><Checkbox onChange={onChange}>Aditional Driver</Checkbox></Menu.Item>
+                            <Menu.Item key="18"><Checkbox onChange={onChange}>Booster Seat</Checkbox></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Sider>

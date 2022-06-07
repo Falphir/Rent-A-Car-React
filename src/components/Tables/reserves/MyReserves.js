@@ -211,7 +211,7 @@ const MyReserves = (props) => {
                 grid={{ gutter: 16, column: ncolumn }} pagination={pagination} rowKey={record => record._id} loading={loading}
                 dataSource={reserves}
                 renderItem={item => (
-                    <List.Item><ReserveCar checkIn={item.datePickUp} checkOut={item.dateReturn} CarId={item.idCar} /></List.Item>
+                    <List.Item><ReserveCar DatePickUp={item.datePickUp} DateReturn={item.dateReturn} CarId={item.idCar} /></List.Item>
                 )}
             />
         </>

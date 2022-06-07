@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Config from '../../../config';
 import { List, Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
+import { UserOutlined, CarOutlined } from '@ant-design/icons';
+import IconTransmission from '../../IconTransmission';
 const { Meta } = Card;
 
 
@@ -42,17 +44,6 @@ const CarsCard = (props) => {
             total: 0
         }
     });
-
-
-    const columns = [
-        { title: 'Description', value: 'description', },
-        { title: 'Nº Adults', value: 'nAdult', },
-        { title: 'Nº Children', value: 'nChild', },
-        { title: 'Nº Cars', value: 'nCar', },
-        { title: 'Price (€)', value: 'price', },
-        { title: 'Nº Stars', value: 'nStars',},
-        //{ title: 'Tags', value: 'tags', render: renderTags }
-    ];
 
 
     const fetchApi = (pageSize, current) => {
@@ -114,9 +105,9 @@ const CarsCard = (props) => {
         ncolumn = 1
     } else if (Size.width >= 650 && Size.width < 860) {
         ncolumn = 2
-    } else if (Size.width >= 860 && Size.width < 1066) {
+    } else if (Size.width >= 860 && Size.width < 1200) {
         ncolumn = 3
-    } else if (Size.width >= 1066 && Size.width < 1920) {
+    } else if (Size.width >= 1200 && Size.width < 1920) {
         ncolumn = 4
     } else if (Size.width >= 1920) {
         ncolumn = 5
@@ -125,7 +116,7 @@ const CarsCard = (props) => {
 
     return (
         <>
-        <List grid={{ gutter: 16, column: ncolumn }} dataSource={cars} pagination={pagination} onChange={onChange} columns={columns} rowKey={record => record._id} loading={loading}
+        <List grid={{ gutter: 16, column: ncolumn }} dataSource={cars} pagination={pagination} onChange={onChange} rowKey={record => record._id} loading={loading}
             renderItem={item => (
                 <List.Item>
                     <Link to={`/cars/${item._id}`}>
@@ -139,17 +130,15 @@ const CarsCard = (props) => {
                             <div className="additional">
                                 <Row justify='center'>
                                     <Col flex="auto">
-                                        <div key={item._id}>
-                                            {item.nStars} <i class="fas fa-star"></i>
-                                        </div>
+                                        <UserOutlined /> <span> {item.seats}</span>
                                     </Col>
 
                                     <Col flex="auto">
-                                        {item.nAdult} <i class="fas fa-user-alt"></i>
+                                        <IconTransmission/> <span> {item.typeTransmission}</span>
                                     </Col>
 
                                     <Col flex="auto">
-                                        {item.nChild} <i class="fas fa-child"></i>
+                                        <CarOutlined /> {item.carCategory}
                                     </Col>
 
                                     <Col flex="auto">

@@ -75,18 +75,6 @@ const CarComments = forwardRef((props, ref) => {
             });
     }
 
-    
-
-    const columns = [
-        { title: 'Description', value: 'description', },
-        { title: 'Nº Adults', value: 'nAdult', },
-        { title: 'Nº Children', value: 'nChild', },
-        { title: 'Nº Cars', value: 'nCar', },
-        { title: 'Price (€)', value: 'price', },
-        { title: 'Nº Stars', value: 'nStars', },
-        //{ title: 'Tags', value: 'tags', render: renderTags }
-    ];
-
     useEffect(() => {
         fetchApi(data.pagination.pageSize, data.pagination.current);
 

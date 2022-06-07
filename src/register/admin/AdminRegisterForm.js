@@ -103,7 +103,7 @@ const RegisterForm = () => {
                 password: e.password,
                 role: {
                     nameRole: radio.value,
-                    scopes: ["read-own-reserves", "create-reserve", "detail-reserve", "create-favorite", "read-own-favorites", "delete-favorite", "create-comment"]
+                    scopes: ["read-own-reserves", "create-reserve", "detail-reserve", "verify-logged-in"]
                 }
             }
         } else if (radio.value == 'editor') {
@@ -113,7 +113,7 @@ const RegisterForm = () => {
                 password: e.password,
                 role: {
                     nameRole: radio.value,
-                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car"]
+                    scopes: ["create-reserve", "detail-reserve", "verify-logged-in", "update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car"]
                 }
             }
         } else if (radio.value == 'admin') {
@@ -123,7 +123,7 @@ const RegisterForm = () => {
                 password: e.password,
                 role: {
                     nameRole: radio.value,
-                    scopes: ["create-reserve", "detail-reserve", "update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car", "read-users", "delete-user"]
+                    scopes: ["update-reserve", "read-reserves", "delete-reserve", "create-car", "update-car", "read-reserve-client", "delete-car", "create-reserve", "detail-reserve", "read-users", "delete-user"]
                 }
             }
         }

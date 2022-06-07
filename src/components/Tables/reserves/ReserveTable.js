@@ -32,20 +32,25 @@ const ReserveTable = (props) => {
             //hidden: hidden,
         },
         {
+            title: 'Username',
+            dataIndex: 'nameUser',
+            //hidden: hidden,
+        },
+        {
             title: 'ID Car',
             dataIndex: 'idCar',
             //hidden: hidden,
         },
         {
-            title: 'Date Check In',
-            dataIndex: 'dateCheckIn',
-            sorter: (a, b) => moment(a.dateCheckIn).unix() - moment(b.dateCheckIn).unix(),
+            title: 'Date Pick Up',
+            dataIndex: 'datePickUp',
+            sorter: (a, b) => moment(a.datePickUp).unix() - moment(b.datePickUp).unix(),
             defaultSortOrder: 'ascend',
         },
         {
-            title: 'Date Check Out',
-            dataIndex: 'dateCheckOut',
-            sorter: (a, b) => moment(a.dateCheckOut).unix() - moment(b.dateCheckOut).unix(),
+            title: 'Date Return',
+            dataIndex: 'dateReturn',
+            sorter: (a, b) => moment(a.dateReturn).unix() - moment(b.dateReturn).unix(),
         },
 
         {

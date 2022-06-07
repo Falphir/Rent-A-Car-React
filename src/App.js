@@ -30,17 +30,13 @@ function App() {
         <Route path='/admin/register' exact element={<AdminRegister />}></Route> 
         <Route path='/dashboard' exact element={<Dashboard />} />
         <Route path='/dashboardeditor' exact element={<DashboardEditor />} /> 
-        {/* <Route path='/cars' exact element={<Cars />}></Route> */}
         <Route path='/cars/:carId' exact element={<CarDetails />}></Route>
         <Route path='/cars/search/:description' exact element={<SearchCarsList />}></Route>
-        {/* <Route path='/users' exact element={<Users />}></Route> */}
         <Route path='/carsform' exact element={<CarsForm></CarsForm>}></Route>
         <Route path='/reserves' exact element={<Reserves></Reserves>}></Route>
         <Route path='/myreserves' exact element={<MyReserves></MyReserves>}></Route> 
         <Route path='/reserves/:carId' exact element={<ReservesForm></ReservesForm>}></Route> 
         <Route path='/carList' exact element={<AllCarsList></AllCarsList>}></Route> 
-        {/* <Route path='/myfavorites' exact element={<MyFavorites></MyFavorites>}></Route>  */}
-        {/* <Route path='/favorites/:carId' exact element={<FavoritesForm></FavoritesForm>}></Route> */}
       </Routes>
     </>
   );

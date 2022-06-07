@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Config from '../../config';
-import { List, Card, Col, Row, Button, DatePicker, Form, Image, Space, Rate, Tabs, Table, Layout, Divider, Tag, Tooltip, Comment, message } from 'antd';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons'
+import { List, Card, Col, Row, Button, Form, Image, Space, Rate, Tabs, Table, Layout, Divider, Tag, Tooltip, Comment, message } from 'antd';
+import { UserOutlined, GlobalOutlined } from '@ant-design/icons'
 import { useParams, Link } from 'react-router-dom';
-import Modal from 'antd/lib/modal/Modal';
 import { set, useForm } from "react-hook-form";
 import Footer from '../Footer';
 import TextArea from 'antd/lib/input/TextArea';
@@ -11,6 +10,8 @@ import Avatar from 'antd/lib/avatar/avatar';
 import CarComments from '../CarComments';
 import CarRatings from '../CarRatings';
 import moment from 'moment'
+import IconTransmission from '../IconTransmission';
+import IconKilometers from '../IconKilometers';
 
 const { forwardRef, useRef, useImperativeHandle } = React;
 
@@ -54,8 +55,6 @@ const CarDetails = (props) => {
     const [username, setUsername] = useState();
     const [reserve, setReserve] = useState();
     const { register, handleSubmit } = useForm();
-    const onSubmit = e => postComment(onFinish(e));
-    const [Commentform] = Form.useForm();
     var commentsss;
     let idUser;
 
@@ -74,6 +73,7 @@ const CarDetails = (props) => {
 
     const { carId } = useParams();
 
+    
     // Renderizar Extras
     const RenderExtras = () => {
         console.log(cars.extras)
@@ -85,17 +85,6 @@ const CarDetails = (props) => {
         }
 
     }
-
-
-
-    const columns = [
-        { title: 'Facilities', dataIndex: 'facilities' },
-        { title: 'Quantity', dataIndex: 'quantity', width: '10%', align: 'center' },
-    ];
-
-    const Extracolumns = [
-        { title: 'Extras', dataIndex: 'extras', render: RenderExtras },
-    ];
 
 
 
@@ -130,39 +119,46 @@ const CarDetails = (props) => {
             });
     }
 
+    const { cars, pagination } = data;
 
-    const postComment = (data) => {
-        //fetch('/comment/comments/' + carId, {
-        fetch('/comment/comments/:carId', {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
+    const tableData = [
+        {
+            key: 1,
+            facilities: 'Seats',
+            info: cars.seats,
+        },
+        {
+            key: 2,
+            facilities: 'Kilometers',
+            info: cars.kilometers,
+        },
+        {
+            key: 3,
+            facilities: 'Transmission',
+            info: cars.typeTransmission,
+        },
+        {
+            key: 4,
+            facilities: 'Category',
+            info: cars.carCategory,
+        },
+    ]
 
-            .then((response) => {
-                if (response.ok) {
+    const Extracolumns = [
+        { title: 'Extras', dataIndex: 'extras', render: RenderExtras },
+    ];
+    
+    const ExtrastableData = [
+        {
+            key: 1,
+            extras: { RenderExtras },
+        },
+    ]
 
-                    console.log(response);
-                    message.success('Comment Published');
-                    return (
-                        <>
-                            {response.json()}
-                            {Commentform.resetFields()}
-                            {childRef.current.reloadList()}
-                        </>
-                    )
-                } else {
-                    console.log(response);
-                    message.error('An Error Occurred while publishing the comment. Please Try Again Later!');
-                }
-            })
-
-            .catch((err) => {
-                console.error('error:', err);
-            });
-    }
-
-
+    const columns = [
+        { title: 'Facilities', dataIndex: 'facilities' },
+        { title: '', dataIndex: 'info', width: '20%', align: 'center' },
+    ];
 
     useEffect(() => {
         fetch('/auth/me', {
@@ -215,67 +211,6 @@ const CarDetails = (props) => {
     }
 
 
-    const { cars, pagination } = data;
-
-
-    function callback(key) {
-        console.log(key);
-    }
-
-    const tableData = [
-        {
-            key: 1,
-            facilities: 'Number of Double Bed',
-            quantity: cars.nDoubleBed,
-        },
-        {
-            key: 2,
-            facilities: 'Number of Single Bed',
-            quantity: cars.nSingleBed,
-        },
-        {
-            key: 3,
-            facilities: 'Number Cars',
-            quantity: cars.nCar,
-        },
-    ]
-
-    const ExtrastableData = [
-        {
-            key: 1,
-            extras: { RenderExtras },
-        },
-    ]
-
-    const onChange = () => {
-        setIcon(!icon)
-    }
-
-    /* function onChangeComment(date, comment) {
-        console.log("comment: " + comment);
-        commentsss = comment;
-    } */
-
-    const onFinish = (e) => {
-
-        idUser = localStorage.getItem('idUser');
-
-        console.log(e);
-        console.log("userID: " + idUser);
-        console.log("carID: " + carId);
-        console.log("comment: " + commentsss);
-
-        return {
-            date: moment().format('YYYY/MM/DD'),
-            comment: e.comment,
-            rating: e.rating,
-            idUser: idUser,
-            nameUser: username,
-            idCar: carId
-        }
-    }
-
-
     return (
         <>
 
@@ -294,37 +229,17 @@ const CarDetails = (props) => {
                                 </Row>
                             </List.Item>
                             <List.Item>
-                                <Card bordered={false} title={<h3><Tag color={"geekblue"}>{cars.typeCar}</Tag><b>{cars.description}</b></h3>}>
+                                <Card bordered={false} title={<h3><Tag color={"geekblue"}>{cars.carCategory}</Tag><b>{cars.description}</b></h3>}>
                                     <Row>
                                         <Col span={16}>
                                             <Row justify='start'>
-                                                <p className='cars-details-price-label'><b className='cars-details-price'>{cars.price}€ </b>per/Person</p>
-                                            </Row>
-                                        </Col>
-                                        <Col span={8}>
-                                            <Row justify='end'>
-                                                <Rate disabled value={cars.nStars}></Rate>
+                                                <p className='cars-details-price-label'><b className='cars-details-price'>{cars.price}€ </b>per/Day</p>
                                             </Row>
                                         </Col>
                                     </Row>
                                     <Row style={{ marginTop: 10 }}>
                                         <Col span={24}>
                                             <Row>
-                                                <h4><b> Capacity </b></h4>
-                                            </Row>
-                                            <Divider style={{ marginTop: 0 }}></Divider>
-                                            <Row justify='start'>
-                                                <Tooltip placement='top' title={"Adults"}>
-                                                    <div className='cars-details-icons' style={{ marginRight: 16 }}><i class="fas fa-user-alt"></i> {cars.nAdult} </div>
-                                                </Tooltip>
-                                                <Tooltip placement='top' title={"Childrens"}>
-                                                    <div className='cars-details-icons'><i class="fas fa-child"></i> {cars.nChild}  </div>
-                                                </Tooltip>
-                                            </Row>
-                                            <Row justify='start' >
-
-                                            </Row>
-                                            <Row style={{ paddingTop: 20 }}>
                                                 <Col>
                                                     {!userLogged &&
                                                         <Tooltip placement='top' title={"You need to have an Account in order to be able to reserve this car"}>
@@ -346,118 +261,21 @@ const CarDetails = (props) => {
                                                         </>
                                                     }
                                                 </Col>
-                                                <Col>
-                                                    <div style={{ paddingLeft: 8 }}>
-                                                        {/* favorites */}
-                                                        {!userLogged &&
-                                                            <Tooltip placement='top' title={"You need to have an Account in order to be able to Add this car to favorites"}>
-                                                                <Button disabled><HeartOutlined />Add to Favorites</Button>
-                                                            </Tooltip>
-                                                        }
-                                                        {userLogged &&
-                                                            <>
-                                                                {disabled &&
-                                                                    <Tooltip placement='top' title={"You need to be logged as User in order to be able to Add this car to favorites"}>
-                                                                        <Button disabled ><HeartFilled style={{ color: 'red' }} /> Add to Favorites</Button>
-                                                                    </Tooltip>
-                                                                }
-                                                                {!disabled &&
-                                                                    <Link to={`/favorites/${carId}`}>
-                                                                        <Button bordered={false}><HeartFilled style={{ color: 'red' }} /> Add to Favorites</Button>
-                                                                    </Link>
-                                                                }
-                                                            </>
-                                                        }
-                                                    </div>
-
+                                            </Row>
+                                            <Row style={{ marginTop: "32px"}}>
+                                                <h4><b> Specifications </b></h4>
+                                            </Row>
+                                            <Divider style={{ marginTop: 0 }}></Divider>
+                                            <Row >
+                                                <Col span={24}>
+                                                    <Table columns={columns} dataSource={tableData} pagination={false} />
+                                                    <Table columns={Extracolumns} dataSource={ExtrastableData} pagination={false} />
                                                 </Col>
                                             </Row>
                                         </Col>
                                     </Row>
                                 </Card>
                             </List.Item>
-                            <Row>
-                                <Col span={24}>
-                                    <Tabs defaultActiveKey="1" onChange={callback}>
-                                        <TabPane tab="Information" key="1">
-                                            <Table columns={columns} dataSource={tableData} pagination={false} />
-                                            <Table columns={Extracolumns} dataSource={ExtrastableData} pagination={false} />
-                                        </TabPane>
-                                        <TabPane tab="Comments" key="2">
-                                            <CarComments data={carId} ref={childRef} />
-                                            {!userLogged &&
-                                                <Tooltip placement='top' title={"You need to have an Account in order to be able to Add this car to favorites"}>
-                                                    <Comment
-                                                        disabled
-                                                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                                        content={
-                                                            <Form layout='vertical' onFinish={onSubmit}>
-                                                                <Form.Item name="rating">
-                                                                    <Rate disabled></Rate>
-                                                                </Form.Item>
-                                                                <Form.Item name="comment">
-                                                                    <TextArea disabled rows={4} placeholder='Insert your comment!'></TextArea>
-                                                                </Form.Item>
-                                                                <Form.Item>
-                                                                    <Button disabled type='primary' htmlType='submit'>Submit</Button>
-                                                                </Form.Item>
-                                                            </Form>
-                                                        }
-                                                    >
-                                                    </Comment>
-                                                </Tooltip>
-                                            }
-                                            {userLogged &&
-                                                <>
-                                                    {disabled &&
-                                                        <Tooltip placement='top' title={"You need to be logged as User in order to be able to comment in this Car"}>
-                                                            <Comment
-                                                                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                                                content={
-                                                                    <Form layout='vertical' onFinish={onSubmit}>
-                                                                        <Form.Item name="rating">
-                                                                            <Rate disabled></Rate>
-                                                                        </Form.Item>
-                                                                        <Form.Item name="comment">
-                                                                            <TextArea disabled rows={4} placeholder='Insert your comment!'></TextArea>
-                                                                        </Form.Item>
-                                                                        <Form.Item>
-                                                                            <Button disabled type='primary' htmlType='submit'>Submit</Button>
-                                                                        </Form.Item>
-                                                                    </Form>
-                                                                }
-                                                            >
-                                                            </Comment>
-                                                        </Tooltip>
-                                                    }
-                                                    {!disabled &&
-                                                        <Comment
-                                                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                                            content={
-                                                                <Form form={Commentform} layout='vertical' onFinish={onSubmit}>
-                                                                    <Form.Item name="rating">
-                                                                        <Rate></Rate>
-                                                                    </Form.Item>
-                                                                    <Form.Item name="comment">
-                                                                        <TextArea rows={4} placeholder='Insert your comment!'></TextArea>
-                                                                    </Form.Item>
-                                                                    <Form.Item>
-                                                                        <Button type='primary' htmlType='submit'>Submit</Button>
-                                                                    </Form.Item>
-                                                                </Form>
-                                                            }
-                                                        >
-                                                        </Comment>
-                                                    }
-                                                </>
-                                            }
-                                        </TabPane>
-                                        <TabPane tab="Ratings" key="3">
-                                            <CarRatings data={carId} />
-                                        </TabPane>
-                                    </Tabs>
-                                </Col>
-                            </Row>
                         </List>
                     </Card>
                 </Col>

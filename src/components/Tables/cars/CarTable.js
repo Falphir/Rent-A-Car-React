@@ -288,30 +288,28 @@ const CarTable = (props) => {
             setImageChange(false)
             return {
                 image: ImageUrl,
+                title: e.title,
                 description: e.description,
-                nAdult: e.nAdult,
-                nChild: e.nChild,
-                nCar: e.nCar,
+                seats: e.seats,
+                kilometers: e.kilometers,
                 price: e.price,
-                typeCar: e.typeCar,
-                nSingleBed: e.nSingleBed,
-                nDoubleBed: e.nDoubleBed,
-                nStars: e.nStars,
+                typeTransmission: e.typeTransmission,
+                carCategory: e.carCategory,
+                location: e.location,
                 extras: e.extras
             }
 
         } else {
             return {
                 image: e.image,
+                title: e.title,
                 description: e.description,
-                nAdult: e.nAdult,
-                nChild: e.nChild,
-                nCar: e.nCar,
+                seats: e.seats,
+                kilometers: e.kilometers,
                 price: e.price,
-                typeCar: e.typeCar,
-                nSingleBed: e.nSingleBed,
-                nDoubleBed: e.nDoubleBed,
-                nStars: e.nStars,
+                typeTransmission: e.typeTransmission,
+                carCategory: e.carCategory,
+                location: e.location,
                 extras: e.extras
             }
         }
@@ -390,33 +388,32 @@ const CarTable = (props) => {
                 <h2></h2>
                 <Form layout='vertical'>
                     <Form.Item label={<h4><b>Description</b></h4>}>
+                        <Input value={editingCar?.title} onChange={(e) => {
+                            setEditingCar(pre => {
+                                return { ...pre, title: e.target.value }
+                            })
+                        }} />
+                    </Form.Item>
+                    <Form.Item label={<h4><b>Description</b></h4>}>
                         <TextArea value={editingCar?.description} onChange={(e) => {
                             setEditingCar(pre => {
                                 return { ...pre, description: e.target.value }
                             })
                         }} />
                     </Form.Item>
-                    <Form.Item label={<h4><b>Number of Adults</b></h4>}>
-                        <InputNumber min={0} value={editingCar?.nAdult} onChange={(e) => {
-                            console.log("n Adults: " + e)
+                    <Form.Item label={<h4><b>Number of Seats</b></h4>}>
+                        <InputNumber min={0} value={editingCar?.seats} onChange={(e) => {
+                            console.log("n Seats: " + e)
                             setEditingCar(pre => {
-                                return { ...pre, nAdult: e }
+                                return { ...pre, seats: e }
                             })
                         }} />
                     </Form.Item>
-                    <Form.Item label={<h4><b>Number of Childrens</b></h4>}>
-                        <InputNumber min={0} value={editingCar?.nChild} onChange={(e) => {
+                    <Form.Item label={<h4><b>Kilometers</b></h4>}>
+                        <Input value={editingCar?.kilometers} onChange={(e) => {
                             setEditingCar(pre => {
-                                console.log("n Childs: " + e)
-                                return { ...pre, nChild: e }
-                            })
-                        }} />
-                    </Form.Item>
-                    <Form.Item label={<h4><b>Number of Cars</b></h4>}>
-                        <InputNumber min={0} value={editingCar?.nCar} onChange={(e) => {
-                            console.log("n Cars: " + e)
-                            setEditingCar(pre => {
-                                return { ...pre, nCar: e }
+                                console.log("kilometers: " + e)
+                                return { ...pre, kilometers: e.target.value }
                             })
                         }} />
                     </Form.Item>
@@ -427,41 +424,31 @@ const CarTable = (props) => {
                             })
                         }} />
                     </Form.Item>
-                    <Form.Item name="typeCar" label={<h4><b>Type of Car</b></h4>} style={{ width: 400 }}>
-                        <Select defaultValue={editingCar?.typeCar} onChange={e => {
+                    <Form.Item name="typeTransmission" label={<h4><b>Type of Transmission</b></h4>} style={{ width: 400 }}>
+                        <Select defaultValue={editingCar?.typeTransmission} onChange={e => {
                             setEditingCar(pre => {
-                                return { ...pre, typeCar: e }
+                                return { ...pre, typeTransmission: e }
                             })
                         }}>
-                            <Select.Option value="Apartamento" />
-                            <Select.Option value="Quarto" />
-                            <Select.Option value="Casa de Férias" />
-                            <Select.Option value="Hostel" />
-                            <Select.Option value="Casa de Campo" />
-                            <Select.Option value="Outro" />
+                            <Select.Option value="Manual" />
+                            <Select.Option value="Automatic" />
                         </Select>
                     </Form.Item>
-                    <Form.Item label={<h4><b>Number of Double Beds</b></h4>}>
-                        <InputNumber min={0} value={editingCar?.nDoubleBed} onChange={(e) => {
-                            console.log("n DoubleBed: " + e)
+                    <Form.Item name="carCategory" label={<h4><b>Car Category</b></h4>} style={{ width: 400 }}>
+                        <Select defaultValue={editingCar?.carCategory} onChange={e => {
                             setEditingCar(pre => {
-                                return { ...pre, nDoubleBed: e }
+                                return { ...pre, carCategory: e }
                             })
-                        }} />
+                        }}>
+                            <Select.Option value="Small" />
+                            <Select.Option value="Medium" />
+                            <Select.Option value="Large" />
+                        </Select>
                     </Form.Item>
-                    <Form.Item label={<h4><b>Number of Single Beds</b></h4>}>
-                        <InputNumber min={0} value={editingCar?.nSingleBed} onChange={(e) => {
-                            console.log("n SingleBed: " + e)
+                    <Form.Item label={<h4><b>Location</b></h4>}>
+                        <Input value={editingCar?.location} onChange={(e) => {
                             setEditingCar(pre => {
-                                return { ...pre, nSingleBed: e }
-                            })
-                        }} />
-                    </Form.Item>
-                    <Form.Item label={<h4><b>Number of Stars</b></h4>}>
-                        <Rate value={editingCar?.nStars} onChange={(e) => {
-                            console.log("n Stars: " + e)
-                            setEditingCar(pre => {
-                                return { ...pre, nStars: e }
+                                return { ...pre, location: e.target.value }
                             })
                         }} />
                     </Form.Item>
@@ -475,33 +462,23 @@ const CarTable = (props) => {
                         }} >
                             <Row>
                                 <Col>
-                                    <Checkbox value="vip" style={{ lineHeight: '32px' }}>
-                                        VIP
+                                    <Checkbox value="gps" style={{ lineHeight: '32px'}}>
+                                        GPS
                                     </Checkbox>
                                 </Col>
                                 <Col>
-                                    <Checkbox value="carPark" style={{ lineHeight: '32px' }}>
-                                        Car Park
+                                    <Checkbox value="babySeat" style={{ lineHeight: '32px'}}>
+                                        Baby Seat
                                     </Checkbox>
                                 </Col>
                                 <Col>
-                                    <Checkbox value="breakfast" style={{ lineHeight: '32px' }}>
-                                        Breakfast
+                                    <Checkbox value="aditionalDriver" style={{ lineHeight: '32px'}}>
+                                        Aditional Driver
                                     </Checkbox>
                                 </Col>
                                 <Col>
-                                    <Checkbox value="lunch" style={{ lineHeight: '32px' }}>
-                                        Lunch
-                                    </Checkbox>
-                                </Col>
-                                <Col>
-                                    <Checkbox value="spa" style={{ lineHeight: '32px' }}>
-                                        Spa
-                                    </Checkbox>
-                                </Col>
-                                <Col>
-                                    <Checkbox value="pool" style={{ lineHeight: '32px' }}>
-                                        Pool
+                                    <Checkbox value="boosterSeat" style={{ lineHeight: '32px'}}>
+                                        Booster Seat
                                     </Checkbox>
                                 </Col>
                             </Row>

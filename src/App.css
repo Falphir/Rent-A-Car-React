@@ -21,7 +21,7 @@
   font-size: 3rem;
 }
 
-.register-banner-container,.login-banner-container, .reserve-banner-container, .favorites-banner-container , .admin-register-banner-container {
+.register-banner-container,.login-banner-container, .reserve-banner-container, .admin-register-banner-container {
   background: url('./assets/images/banner.jpeg') fixed center center/cover no-repeat;
   height: 94vh;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -68,7 +68,4 @@
     height: 150vh;
   }
 
-  .favorites-banner-container {
-    height: 92.5vh;
-  }
 }

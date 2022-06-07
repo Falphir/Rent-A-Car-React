@@ -194,7 +194,7 @@ const UserTable = (props) => {
     };
 
     const reloadTable = () => {
-        handleTableChange(pagination)
+        handleTableChange(pagination);
     }
 
     const { users, pagination } = data;

@@ -7,7 +7,7 @@ import NotFound from '../../../assets/images/Car-Unavailable1.jpg'
 
 const { Meta } = Card;
 
-const FavoritesCars = (props) => {
+const ReserveCars = (props) => {
 
     const [loading, setLoading] = useState(true);
     const [userLogged, setUserLogged] = useState();
@@ -114,15 +114,15 @@ const FavoritesCars = (props) => {
                                 <Row justify='center'>
                                     <Col flex="auto">
                                         <Row justify='center'>
-                                            <Tooltip title="Check In">
-                                                <ClockCircleOutlined /> {props.checkIn}
+                                            <Tooltip title="Date Pick Up">
+                                                <ClockCircleOutlined /> {props.DatePickUp}
                                             </Tooltip>
                                         </Row>
                                     </Col>
                                     <Col flex="auto">
                                         <Row justify='center'>
-                                            <Tooltip title="Check Out">
-                                                <ClockCircleOutlined /> {props.checkOut}
+                                            <Tooltip title="Date Return">
+                                                <ClockCircleOutlined /> {props.DateReturn}
                                             </Tooltip>
                                         </Row>
                                     </Col>
@@ -135,7 +135,7 @@ const FavoritesCars = (props) => {
 
     }
 
-    console.log("teste: " + props.DateCheckOut)
+    console.log("teste: " + props.DateReturn)
 
     return (
         <>
@@ -144,4 +144,4 @@ const FavoritesCars = (props) => {
     )
 }
 
-export default FavoritesCars;
+export default ReserveCars;

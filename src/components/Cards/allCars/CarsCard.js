@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { List, Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom'
 import noImage from '../../../assets/images/Car-Unavailable1.jpg';
-import transmission from '../../../assets/transmission.svg';
-import { UserOutlined } from '@ant-design/icons';
-
+import { UserOutlined, CarOutlined } from '@ant-design/icons';
+import IconTransmission from '../../IconTransmission';
 
 const { Meta } = Card;
 
@@ -99,11 +98,11 @@ const CarsCard = (props) => {
 
     if (Size.width < 576) {
         ncolumn = 1
-    } else if (Size.width >= 576 && Size.width < 768) {
+    } else if (Size.width >= 576 && Size.width < 864) {
         ncolumn = 2
-    } else if (Size.width >= 768 && Size.width < 992) {
+    } else if (Size.width >= 864 && Size.width < 1200) {
         ncolumn = 3
-    } else if (Size.width >= 992 ) {
+    } else if (Size.width >= 1200 ) {
         ncolumn = 4
     }
 
@@ -124,15 +123,15 @@ const CarsCard = (props) => {
                             <div className="additional">
                                 <Row justify='center'>
                                     <Col flex="auto">
-                                        {item.seats} <UserOutlined />
+                                        <UserOutlined /> <span> {item.seats}</span>
                                     </Col>
 
                                     <Col flex="auto">
-                                        {item.nAdult} <i src=""></i>
+                                        <IconTransmission/> <span> {item.typeTransmission}</span>
                                     </Col>
 
                                     <Col flex="auto">
-                                        {item.nChild} <i class="fas fa-child"></i>
+                                        <CarOutlined /> {item.carCategory}
                                     </Col>
 
                                     <Col flex="auto">
