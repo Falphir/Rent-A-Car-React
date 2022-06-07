@@ -17,7 +17,7 @@ function BannerSection() {
     return (
 
         <div className='banner-container'>
-            <h1>FIND BOOK ENJOY</h1>
+            <h1>FIND RENT ENJOY</h1>
             <p>What are you waiting for?</p>
             <div className="banner-search">
                 <Input className='input' placeholder="Search here..." name="search" onChange={handleChange} />
